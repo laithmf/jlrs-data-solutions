@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Project 1 &mdash; JLRS Data Solutions Inc.</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Project 1: Employee Database Management System by JLRS Data Solutions Inc.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="mystyleSheet.css">
+  <link rel="stylesheet" href="project1_style.css">
+  <style>
+    /* Portfolio back link */
+    .nav-portfolio-link {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1ED87F !important;
+      padding: 0.4rem 0.9rem !important;
+      border: 1px solid rgba(30,216,127,0.4);
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .nav-portfolio-link:hover {
+      background: rgba(30,216,127,0.12);
+      color: #fff !important;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-brand">
+        <img src="images/logo-png.png" width="70" height="70" class="d-inline-block align-top" alt="JLRS Logo">
+        <hr>
+      </div>
+      <div class="collapse navbar-collapse order-2 order-md-1" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="Project_1.html">Project 1</a></li>
+          <li class="nav-item"><a class="nav-link" href="Project_2.html">Project 2</a></li>
+          <li class="nav-item"><a class="nav-link" href="Project_3.html">Project 3</a></li>
+          <li class="nav-item ms-md-3 mt-2 mt-md-0">
+            <a class="nav-link nav-portfolio-link" href="https://laithfakhruldin.com" target="_blank">&#8592; Portfolio</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-line-white"></div>
+  <div class="navbar-line-red"></div>
+
+  <main class="flex-shrink-0">
+
+    <!-- Hero -->
+    <div class="page-hero">
+      <span class="eyebrow">Project 1 &mdash; CSC 4110</span>
+      <h1>Employee <em>Database</em><br>Management System</h1>
+      <p>A fully functional, state-of-the-art program to handle employee records — built with Python, Tkinter, and a persistent Pickle database.</p>
+    </div>
+
+    <!-- Tech badges -->
+    <div class="tech-badges">
+      <span class="badge-tech">Python 3</span>
+      <span class="badge-tech">Tkinter GUI</span>
+      <span class="badge-tech">Pickle DB</span>
+      <span class="badge-tech">CSV Import</span>
+      <span class="badge-tech">Event Logging</span>
+      <span class="badge-tech">Input Validation</span>
+    </div>
+
+    <!-- Vision -->
+    <div class="about-strip">
+      <h2>Our Vision</h2>
+      <p>We are a software company that helps organizations build and transform into digital enterprises. Team 3's sourcing methodology includes well-defined solutions specifically tailored to customer problems, providing a step-by-step approach to business dynamics and helping IT organizations align goals with the overall vision of the business.</p>
+    </div>
+
+    <!-- Feature rows -->
+    <div class="feature-row">
+
+      <div class="feature-item">
+        <div>
+          <img src="images/employees-queries-database-image1.png" alt="Employee Database Main Interface" onclick="openLightbox(this)">
+          <span class="zoom-hint">&#128269; Click to enlarge</span>
+        </div>
+        <div class="feature-item-text">
+          <h2>Fully Innovative Application</h2>
+          <p>State-of-the-art, fully functional program that handles the complete employee database lifecycle — add, query, update, and delete records all from one clean interface.</p>
+        </div>
+      </div>
+
+      <div class="feature-item reverse">
+        <div>
+          <img src="images/employees-queries-database-image2.png" alt="User Friendly Interface" onclick="openLightbox(this)">
+          <span class="zoom-hint">&#128269; Click to enlarge</span>
+        </div>
+        <div class="feature-item-text">
+          <h2>User Friendly</h2>
+          <p>Simplified application with user-friendly settings for every client task, featuring real-time input validation, character-limited fields, and clear error pop-up guidance so mistakes are caught before they reach the database.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div>
+          <img src="images/employees-queries-database-image5.png" alt="Event Logging System" onclick="openLightbox(this)">
+          <span class="zoom-hint">&#128269; Click to enlarge</span>
+        </div>
+        <div class="feature-item-text">
+          <h2>Event Logging</h2>
+          <p>Every action — additions, queries, and deletions — is automatically timestamped and recorded to a persistent log file. Full auditability means you always know who changed what and when.</p>
+        </div>
+      </div>
+
+      <div class="feature-item reverse">
+        <div>
+          <img src="images/employees-queries-database-image4.png" alt="CSV Import and Duplicate Check" onclick="openLightbox(this)">
+          <span class="zoom-hint">&#128269; Click to enlarge</span>
+        </div>
+        <div class="feature-item-text">
+          <h2>CSV Import &amp; Duplicate Guard</h2>
+          <p>Bulk-load employee data directly from a CSV file on startup. The system automatically checks for duplicate SSNs before inserting any record, keeping your database clean and consistent.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Download -->
+    <a href="#go_to_Agreement"><button class="open-button" onclick="openForm()">&#11015; Download</button></a>
+
+    <div class="form-popup" id="myForm">
+      <form method="get" action="zip-files/employees-queries-database.zip" class="form-container">
+        <h2 style="color:#094F58;font-size:1rem;" id="go_to_Agreement">Please read through this policy agreement and click Agree at the bottom.</h2>
+        <h2>End-User License Agreement (EULA) — Group Project 1</h2>
+        <p>This End-User License Agreement ("EULA") is a legal agreement between you and Group 3. This EULA governs your acquisition and use of our Group Project 1 software directly from Group 3 or indirectly through an authorized reseller or distributor.<br><br>
+        Please read this EULA carefully before completing the installation process and using the software. It provides a license to use the software and contains warranty information and liability disclaimers.<br><br>
+        By clicking "Agree" or installing and/or using the software, you confirm acceptance of the software and agree to be bound by the terms of this EULA.</p>
+        <p>Each party agrees to indemnify, defend, and hold harmless the other party from and against any loss, cost, or damage of any kind (including reasonable outside attorneys' fees) to the extent arising out of its breach of this Agreement, and/or its negligence or willful misconduct.</p>
+        <h2>License Grant</h2>
+        <p>Group 3 hereby grants you a personal, non-transferable, non-exclusive licence to use the Group Project 1 software on your devices in accordance with the terms of this EULA.</p>
+        <p><strong>You are not permitted to:</strong></p>
+        <ul>
+          <li>Edit, alter, modify, adapt, translate, or otherwise change the whole or any part of the Software, nor decompile, disassemble, or reverse engineer the Software.</li>
+          <li>Reproduce, copy, distribute, resell, or otherwise use the Software for any commercial purpose.</li>
+          <li>Allow any third party to use the Software on behalf of or for the benefit of any third party.</li>
+          <li>Use the Software in any way which breaches any applicable local, national, or international law.</li>
+          <li>Use the Software for any purpose that Group 3 considers is a breach of this EULA.</li>
+        </ul>
+        <h2>Intellectual Property and Ownership</h2>
+        <p>Group 3 shall at all times retain ownership of the Software as originally downloaded by you and all subsequent downloads. The Software and all intellectual property rights therein are and shall remain the property of Group 3.</p>
+        <h2>Data</h2>
+        <p>In the event of a security breach, Group 3 shall take prompt corrective action and provide notification within seventy-two (72) hours of confirmation of the incident, unless notification would disrupt law enforcement investigation.</p>
+        <h2>Termination</h2>
+        <p>This EULA is effective from the date you first use the Software and shall continue until terminated. It will terminate immediately if you fail to comply with any term of this EULA.</p>
+        <h2>Governing Law</h2>
+        <p>This EULA, and any dispute arising out of or in connection with it, shall be governed by and construed in accordance with the laws of the United States.</p>
+        <button type="submit" class="btn">&#10003; &nbsp;Agree &amp; Download</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">&#10005; &nbsp;Close</button>
+      </form>
+    </div>
+
+    <script>
+      function openForm() { document.getElementById("myForm").style.display = "block"; }
+      function closeForm() { document.getElementById("myForm").style.display = "none"; }
+    </script>
+  </main>
+
+  <!-- Lightbox overlay -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <button id="lightbox-close" onclick="closeLightbox()" title="Close (or press Esc)">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">&#8679;</button>
+  <script src="scroll-top-button.js"></script>
+
+  <script>
+    function openLightbox(imgEl) {
+      const lb      = document.getElementById('lightbox');
+      const lbImg   = document.getElementById('lightbox-img');
+      const lbCap   = document.getElementById('lightbox-caption');
+      lbImg.src     = imgEl.src;
+      lbImg.alt     = imgEl.alt;
+      lbCap.textContent = imgEl.alt;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+  <footer class="p-center sticky-footer">
+    <div class="container-fluid text-center">
+      <span class="text-muted"><small><em>All content copyright &copy; 2023, JLRS Data Solutions Inc.</em></small></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Project 2 &mdash; JLRS Data Solutions Inc.</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Project 2: La Café Coffee Shop Application by JLRS Data Solutions Inc.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="mystyleSheet.css">
+  <style>
+    /* ---- Page background ---- */
+    body { background: #1a0f08; min-height: 100vh; }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(120,60,10,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(60,30,5,0.25)  0%, transparent 55%),
+        linear-gradient(160deg, #1a0f08 0%, #2a1505 50%, #0f0a04 100%);
+      z-index: 0; pointer-events: none;
+    }
+    main, nav, footer { position: relative; z-index: 1; }
+
+    /* ---- Hero ---- */
+    .page-hero { padding: 130px 2rem 4rem; text-align: center; }
+    .page-hero .eyebrow {
+      font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #D4A853; margin-bottom: 0.75rem; display: block;
+    }
+    .page-hero h1 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff; margin-bottom: 1rem; display: block;
+      background: none; box-shadow: none; border: none;
+      letter-spacing: -0.01em;
+    }
+    .page-hero h1 span { color: #D4A853; }
+    .page-hero p { color: rgba(255,255,255,0.6); font-size: 1.05rem; max-width: 620px; margin: 0 auto; }
+
+    /* ---- Tech badges ---- */
+    .tech-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; padding: 2rem; }
+    .badge-tech {
+      background: rgba(120,60,10,0.4);
+      color: #D4A853;
+      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 50px;
+      border: 1px solid rgba(212,168,83,0.35);
+    }
+
+    /* ---- Feature rows ---- */
+    .feature-row {
+      display: flex; flex-direction: column; gap: 2rem;
+      max-width: 960px; margin: 0 auto 4rem; padding: 0 2rem;
+    }
+    .feature-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,168,83,0.12);
+      border-radius: 16px; padding: 2rem 2.5rem;
+      display: flex; gap: 2.5rem;
+      align-items: center;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+    .feature-item:hover {
+      background: rgba(212,168,83,0.06);
+      border-color: rgba(212,168,83,0.32);
+      transform: translateX(6px);
+      box-shadow: 0 12px 48px rgba(120,60,10,0.3),
+                  inset 0 0 0 1px rgba(212,168,83,0.1);
+    }
+
+    /* wrapper div that holds <img> + zoom hint */
+    .feature-item > div:first-child {
+      width: 300px;
+      min-width: 220px;
+      flex-shrink: 0;
+    }
+
+    /* ---- Feature images ---- */
+    .feature-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid rgba(212,168,83,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      object-fit: cover;
+      cursor: zoom-in;
+      display: block;
+    }
+
+    /* gold glow animation on hover */
+    @keyframes dataGlow {
+      0%, 100% { box-shadow: 0 0 16px rgba(212,168,83,0.3), 0 8px 32px rgba(0,0,0,0.5); }
+      50%       { box-shadow: 0 0 36px rgba(212,168,83,0.6), 0 8px 32px rgba(0,0,0,0.5); }
+    }
+    .feature-item:hover img { animation: dataGlow 2s ease infinite; }
+
+    /* ---- Zoom hint ---- */
+    .zoom-hint {
+      display: block;
+      font-size: 0.72rem;
+      color: rgba(212,168,83,0.6);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      text-align: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      user-select: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .feature-item:hover .zoom-hint { color: rgba(212,168,83,1); }
+
+    /* ---- Feature text ---- */
+    .feature-item-text { flex: 1; }
+    .feature-item-text h2 {
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+      color: #D4A853; text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 0.65rem;
+    }
+    .feature-item-text p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.75; }
+
+    /* ---- Lightbox ---- */
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      z-index: 9999;
+      background: rgba(10, 5, 2, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      align-items: center; justify-content: center;
+      cursor: zoom-out;
+    }
+    #lightbox.active { display: flex; animation: lbFadeIn 0.22s ease; }
+    @keyframes lbFadeIn { from { opacity:0; } to { opacity:1; } }
+
+    #lightbox img {
+      max-width: 90vw; max-height: 86vh;
+      border-radius: 14px;
+      border: 1.5px solid rgba(212,168,83,0.5);
+      box-shadow: 0 0 90px rgba(212,168,83,0.25), 0 28px 80px rgba(0,0,0,0.75);
+      cursor: zoom-out;
+      animation: lbZoomIn 0.28s cubic-bezier(0.22,1,0.36,1);
+    }
+    @keyframes lbZoomIn {
+      from { transform: scale(0.80); opacity:0; }
+      to   { transform: scale(1);    opacity:1; }
+    }
+
+    #lightbox-close {
+      position: fixed; top: 20px; right: 28px;
+      background: none; border: none;
+      font-size: 2.4rem; line-height: 1;
+      color: rgba(255,255,255,0.65);
+      cursor: pointer; z-index: 10000;
+      transition: color 0.2s, transform 0.2s;
+    }
+    #lightbox-close:hover { color: #D4A853; transform: rotate(90deg) scale(1.2); }
+
+    #lightbox-caption {
+      position: fixed; bottom: 24px; left: 0; right: 0;
+      text-align: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(212,168,83,0.75);
+      pointer-events: none;
+    }
+
+    /* ---- Portfolio back link ---- */
+    .nav-portfolio-link {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1ED87F !important;
+      padding: 0.4rem 0.9rem !important;
+      border: 1px solid rgba(30,216,127,0.4);
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .nav-portfolio-link:hover {
+      background: rgba(30,216,127,0.12);
+      color: #fff !important;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 680px) {
+      .feature-item { flex-direction: column; }
+      .feature-item > div:first-child { width: 100%; min-width: unset; }
+      .feature-item:hover { transform: translateY(-4px); }
+    }
+  </style>
+</head>
+<body class="body-coffee">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-brand">
+        <img src="images/logo-png.png" width="70" height="70" class="d-inline-block align-top" alt="JLRS Logo">
+        <hr>
+      </div>
+      <div class="collapse navbar-collapse order-2 order-md-1" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="Project_1.html">Project 1</a></li>
+          <li class="nav-item"><a class="nav-link active" href="Project_2.html">Project 2</a></li>
+          <li class="nav-item"><a class="nav-link" href="Project_3.html">Project 3</a></li>
+          <li class="nav-item ms-md-3 mt-2 mt-md-0">
+            <a class="nav-link nav-portfolio-link" href="https://laithfakhruldin.com" target="_blank">&#8592; Portfolio</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-line-white"></div>
+  <div class="navbar-line-red"></div>
+
+  <main class="flex-shrink-0">
+
+    <!-- Hero -->
+    <div class="page-hero">
+      <div class="eyebrow">Project 2 &mdash; CSC 4110</div>
+      <h1><span>La Café</span><br>Coffee Shop</h1>
+      <p>A state-of-the-art coffee shop application with advanced order management, inventory tracking, and a seamless user experience — all in one program.</p>
+    </div>
+
+    <!-- Tech badges -->
+    <div class="tech-badges">
+      <span class="badge-tech">Python 3</span>
+      <span class="badge-tech">Tkinter GUI</span>
+      <span class="badge-tech">Order Management</span>
+      <span class="badge-tech">Inventory System</span>
+      <span class="badge-tech">Database</span>
+    </div>
+
+    <!-- Feature rows -->
+    <div class="feature-row">
+
+      <div class="feature-item">
+        <div>
+          <img src="images/coffeeShop1.png" alt="Coffee Shop Application Interface" onclick="openLightbox(this)">
+          <span class="zoom-hint">&#128269; Click to enlarge</span>
+        </div>
+        <div class="feature-item-text">
+          <h2>Fully Innovative Application</h2>
+          <p>State-of-the-art, fully functional program designed to handle all aspects of a coffee shop — from the welcome screen to checkout and reports.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div>
+          <img src="images/coffeeShop4.png" alt="User Friendly Interface" onclick="openLightbox(this)">
+          <span class="zoom-hint">&#128269; Click to enlarge</span>
+        </div>
+        <div class="feature-item-text">
+          <h2>User Friendly</h2>
+          <p>A simplified application with user-friendly settings for every client task, making it easy for staff to take orders and process them quickly.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div>
+          <img src="images/coffeeShop2.png" alt="Integrated Inventory" onclick="openLightbox(this)">
+          <span class="zoom-hint">&#128269; Click to enlarge</span>
+        </div>
+        <div class="feature-item-text">
+          <h2>Integrated Inventory</h2>
+          <p>Manage and track all your inventory with just the push of a button — real-time updates ensure you never run out of essential supplies.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div>
+          <img src="images/coffeeShop3.png" alt="Order Tracking" onclick="openLightbox(this)">
+          <span class="zoom-hint">&#128269; Click to enlarge</span>
+        </div>
+        <div class="feature-item-text">
+          <h2>Order Tracking</h2>
+          <p>Display and track every order from a secured database system. Know exactly what was ordered, when, and by whom at any given time.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Download -->
+    <a href="#go_to_Agreement"><button class="open-button" onclick="openForm()">&#11015; Download</button></a>
+
+    <div class="form-popup" id="myForm">
+      <form method="get" action="zip-files/Project2-application.zip" class="form-container">
+        <h2 style="color:#094F58;font-size:1rem;" id="go_to_Agreement">Please read through this policy agreement and click Agree at the bottom.</h2>
+        <h2>End-User License Agreement (EULA) — La Café Coffee Shop</h2>
+        <p>This End-User License Agreement ("EULA") is a legal agreement between you and JLRS Data Solutions Inc. This EULA governs your acquisition and use of our La Café Coffee Shop software directly from JLRS Data Solutions Inc. or indirectly through an authorized reseller or distributor.<br><br>
+        By clicking "Agree" or installing and/or using the software, you confirm acceptance of the software and agree to be bound by the terms of this EULA agreement.</p>
+        <p>Each party agrees to indemnify, defend, and hold harmless the other party from and against any loss, cost, or damage of any kind (including reasonable outside attorneys' fees) to the extent arising out of its breach of this Agreement, and/or its negligence or willful misconduct.</p>
+        <h2>License Grant</h2>
+        <p>JLRS Data Solutions Inc. hereby grants you a personal, non-transferable, non-exclusive license to use the La Café Coffee Shop software on your devices in accordance with the terms of this EULA.</p>
+        <p><strong>You are not permitted to:</strong></p>
+        <ul>
+          <li>Edit, alter, modify, adapt, translate, or otherwise change the whole or any part of the Software.</li>
+          <li>Reproduce, copy, distribute, resell, or otherwise use the Software for any commercial purpose.</li>
+          <li>Allow any third party to use the Software on behalf of or for the benefit of any third party.</li>
+          <li>Use the Software in any way which breaches any applicable local, national, or international law.</li>
+        </ul>
+        <h2>Intellectual Property and Ownership</h2>
+        <p>JLRS Data Solutions Inc. shall at all times retain ownership of the Software. The Software and all intellectual property rights therein are and shall remain the property of JLRS Data Solutions Inc.</p>
+        <h2>Data</h2>
+        <p>In the event of a security breach, JLRS Data Solutions Inc. shall provide notification within seventy-two (72) hours of confirmation of the incident, unless notification would disrupt law enforcement investigation.</p>
+        <h2>Currency &amp; Payment</h2>
+        <p>All sums payable pursuant to this Agreement shall be payable in US dollars. All payments shall be made without any deduction or setoff.</p>
+        <h2>Termination</h2>
+        <p>This EULA is effective from the date you first use the Software and shall continue until terminated. It will terminate immediately if you fail to comply with any term of this EULA.</p>
+        <h2>Governing Law</h2>
+        <p>This EULA shall be governed by and construed in accordance with the laws of the United States.</p>
+        <button type="submit" class="btn">&#10003; &nbsp;Agree &amp; Download</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">&#10005; &nbsp;Close</button>
+      </form>
+    </div>
+
+    <script>
+      function openForm()  { document.getElementById("myForm").style.display = "block"; }
+      function closeForm() { document.getElementById("myForm").style.display = "none";  }
+    </script>
+
+    <!-- Lightbox overlay -->
+    <div id="lightbox" onclick="closeLightbox()">
+      <button id="lightbox-close" onclick="closeLightbox()" title="Close (or press Esc)">&times;</button>
+      <img id="lightbox-img" src="" alt="">
+      <div id="lightbox-caption"></div>
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">&#8679;</button>
+  <script src="scroll-top-button.js"></script>
+
+  <script>
+    function openLightbox(imgEl) {
+      const lb    = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbCap = document.getElementById('lightbox-caption');
+      lbImg.src   = imgEl.src;
+      lbImg.alt   = imgEl.alt;
+      lbCap.textContent = imgEl.alt;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+  <footer class="p-center sticky-footer">
+    <div class="container-fluid text-center">
+      <span class="text-muted"><small><em>All content copyright &copy; 2023, JLRS Data Solutions Inc.</em></small></span>
+    </div>
+  </footer>
+</body>
+</html>

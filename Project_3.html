@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Project 3 &mdash; JLRS Data Solutions Inc.</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Project 3: Mario in the World of Bowser — A Flappy Bird-style game by JLRS Data Solutions Inc.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="mystyleSheet.css">
+  <style>
+    body { background: #0d0005; min-height: 100vh; }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 80%, rgba(180,40,10,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 20%, rgba(80,10,5,0.25) 0%, transparent 45%),
+        linear-gradient(160deg, #0d0005 0%, #200508 50%, #0a0003 100%);
+      z-index: 0; pointer-events: none;
+    }
+    /* Lava glow pulse */
+    @keyframes lavaGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(220,60,10,0.4), 0 0 60px rgba(180,30,5,0.2); }
+      50% { box-shadow: 0 0 40px rgba(255,90,20,0.6), 0 0 100px rgba(200,50,10,0.35); }
+    }
+    main, nav, footer { position: relative; z-index: 1; }
+
+    .page-hero {
+      padding: 130px 2rem 4rem;
+      text-align: center;
+    }
+    .page-hero .eyebrow {
+      font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #FF6B35; margin-bottom: 0.75rem;
+    }
+    .page-hero h1 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
+      color: #fff; margin-bottom: 1rem; display: block;
+      background: none; box-shadow: none; border: none;
+      line-height: 1.1;
+    }
+    .page-hero h1 em { color: #FF6B35; font-style: normal; }
+    .page-hero p { color: rgba(255,255,255,0.6); font-size: 1.05rem; max-width: 640px; margin: 0 auto; }
+
+    /* lava badges */
+    .tech-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; padding: 2rem; }
+    .badge-tech {
+      background: rgba(150,40,10,0.35);
+      color: #FF8C5A;
+      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 50px;
+      border: 1px solid rgba(255,107,53,0.35);
+    }
+
+    /* Screenshot cards in a 2-col grid */
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 2rem auto 4rem;
+      padding: 0 2rem;
+    }
+    .screenshot-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,107,53,0.15);
+      border-radius: 16px;
+      padding: 1.75rem;
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+    }
+    .screenshot-card:hover {
+      background: rgba(255,107,53,0.07);
+      border-color: rgba(255,107,53,0.35);
+      transform: translateY(-5px);
+      animation: lavaGlow 2s ease infinite;
+    }
+    .screenshot-card img {
+      max-width: 100%; height: auto;
+      border-radius: 10px;
+      border: 1px solid rgba(255,107,53,0.2);
+      margin-bottom: 1.2rem;
+    }
+    .screenshot-card h2 {
+      font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
+      color: #FF8C5A; text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .screenshot-card p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+    /* story section */
+    .story-strip {
+      background: rgba(255,107,53,0.05);
+      border-top: 1px solid rgba(255,107,53,0.15);
+      border-bottom: 1px solid rgba(255,107,53,0.15);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .story-strip p {
+      color: rgba(255,255,255,0.65);
+      max-width: 720px; margin: 0 auto;
+      font-size: 1rem; line-height: 1.8;
+    }
+
+    /* Portfolio back link */
+    .nav-portfolio-link {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1ED87F !important;
+      padding: 0.4rem 0.9rem !important;
+      border: 1px solid rgba(30,216,127,0.4);
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .nav-portfolio-link:hover {
+      background: rgba(30,216,127,0.12);
+      color: #fff !important;
+    }
+  </style>
+</head>
+<body class="body-Mario">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-brand">
+        <img src="images/logo-png.png" width="70" height="70" class="d-inline-block align-top" alt="JLRS Logo">
+        <hr>
+      </div>
+      <div class="collapse navbar-collapse order-2 order-md-1" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="Project_1.html">Project 1</a></li>
+          <li class="nav-item"><a class="nav-link" href="Project_2.html">Project 2</a></li>
+          <li class="nav-item"><a class="nav-link active" href="Project_3.html">Project 3</a></li>
+          <li class="nav-item ms-md-3 mt-2 mt-md-0">
+            <a class="nav-link nav-portfolio-link" href="https://laithfakhruldin.com" target="_blank">&#8592; Portfolio</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-line-white"></div>
+  <div class="navbar-line-red"></div>
+
+  <main class="flex-shrink-0">
+    <div class="page-hero">
+      <div class="eyebrow">Project 3 &mdash; CSC 4110</div>
+      <h1><em>Mario</em> in the<br>World of Bowser</h1>
+      <p>Help Mario navigate through Bowser's treacherous lava world — riding Flappy Bird, dodging fireballs, and surviving the dungeon depths. Can you make the top&nbsp;10?</p>
+    </div>
+
+    <div class="tech-badges">
+      <span class="badge-tech">Python 3</span>
+      <span class="badge-tech">Pygame</span>
+      <span class="badge-tech">Game Physics</span>
+      <span class="badge-tech">Sound FX</span>
+      <span class="badge-tech">Leaderboard</span>
+      <span class="badge-tech">Obstacle AI</span>
+    </div>
+
+    <!-- Story -->
+    <div class="story-strip">
+      <p>Welcome to <strong style="color:#FF8C5A;">Mario in the World of Bowser</strong>! Riding on the back of Flappy Bird, Mario must dodge towering pillars, evade Bowser's fireballs, and avoid falling into the fiery depths of the Dungan lava. Your quick reflexes and strategic thinking will be put to the test as you guide Mario through each challenging level. The fate of the Mushroom Kingdom depends on it!</p>
+    </div>
+
+    <!-- Screenshots -->
+    <div class="screenshot-grid">
+      <div class="screenshot-card">
+        <img src="images/game1.png" alt="Mario Game World">
+        <h2>The Best Game Ever Made</h2>
+        <p>Take Mario into the Lava World of Bowser with an attractive layout, full sound effects, and music that sets the atmosphere.</p>
+      </div>
+      <div class="screenshot-card">
+        <img src="images/game2.png" alt="Enter Your Name">
+        <h2>Add Your Name</h2>
+        <p>Type your name to be one of the top ten famous players ever to have played this game. Your legacy awaits!</p>
+      </div>
+      <div class="screenshot-card">
+        <img src="images/game4.png" alt="Game Over Screen">
+        <h2>Game Over Page</h2>
+        <p>Play again and again until you satisfy your dreams. It's a never-ending adventure — every run is a new chance to beat your score!</p>
+      </div>
+      <div class="screenshot-card">
+        <img src="images/game5.png" alt="Top Ten Leaderboard">
+        <h2>The Best Ten Players</h2>
+        <p>Join the top ten players — those who made it to the list. Can you be the one on top? The leaderboard never forgets.</p>
+      </div>
+    </div>
+
+    <!-- Download -->
+    <a href="#go_to_Agreement"><button class="open-button" onclick="openForm()">&#11015; Download</button></a>
+
+    <div class="form-popup" id="myForm">
+      <form method="get" action="zip-files/FlappyMario_Application.zip" class="form-container">
+        <h2 style="color:#094F58;font-size:1rem;" id="go_to_Agreement">Please read through this policy agreement and click Agree at the bottom.</h2>
+        <h2>End-User License Agreement (EULA) — Flappy Mario</h2>
+        <p>This End-User License Agreement ("EULA") is a legal agreement between you and JLRS Data Solutions Inc. This EULA governs your acquisition and use of our Flappy Mario software directly from JLRS Data Solutions Inc. or indirectly through an authorized reseller or distributor.<br><br>
+        By clicking "Agree" or installing and/or using the software, you confirm acceptance and agree to be bound by the terms of this EULA.</p>
+        <p>Each party agrees to indemnify, defend, and hold harmless the other party from and against any loss, cost, or damage of any kind (including reasonable outside attorneys' fees) to the extent arising out of its breach of this Agreement, and/or its negligence or willful misconduct.</p>
+        <h2>License Grant</h2>
+        <p>JLRS Data Solutions Inc. hereby grants you a personal, non-transferable, non-exclusive license to use the Flappy Mario software on your devices in accordance with the terms of this EULA.</p>
+        <p><strong>You are not permitted to:</strong></p>
+        <ul>
+          <li>Edit, alter, modify, adapt, translate, or otherwise change the whole or any part of the Software.</li>
+          <li>Reproduce, copy, distribute, resell, or otherwise use the Software for any commercial purpose.</li>
+          <li>Allow any third party to use the Software on behalf of or for the benefit of any third party.</li>
+          <li>Use the Software in any way which breaches any applicable local, national, or international law.</li>
+        </ul>
+        <h2>Intellectual Property and Ownership</h2>
+        <p>JLRS Data Solutions Inc. shall at all times retain ownership of the Software. The Software and all intellectual property rights therein are and shall remain the property of JLRS Data Solutions Inc.</p>
+        <h2>Data</h2>
+        <p>In the event of a security breach, JLRS Data Solutions Inc. shall provide notification within seventy-two (72) hours of confirmation of the incident, unless notification would disrupt law enforcement investigation.</p>
+        <h2 style="background:rgba(255,220,0,0.2);display:inline-block;padding:2px 6px;border-radius:4px;">Currency</h2>
+        <p>All sums payable pursuant to this Agreement shall be payable in US dollars that are legal tender for the payment of public and private debts in the United States.</p>
+        <h2 style="background:rgba(255,220,0,0.2);display:inline-block;padding:2px 6px;border-radius:4px;">Payment</h2>
+        <p>All payments shall be made without any deduction or setoff. Customer shall not be entitled to suspend its payment obligations.</p>
+        <h2>Termination</h2>
+        <p>This EULA is effective from the date you first use the Software and shall continue until terminated. It will terminate immediately if you fail to comply with any term of this EULA.</p>
+        <h2>Governing Law</h2>
+        <p>This EULA shall be governed by and construed in accordance with the laws of the United States.</p>
+        <button type="submit" class="btn">&#10003; &nbsp;Agree &amp; Download</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">&#10005; &nbsp;Close</button>
+      </form>
+    </div>
+
+    <script>
+      function openForm() { document.getElementById("myForm").style.display = "block"; }
+      function closeForm() { document.getElementById("myForm").style.display = "none"; }
+    </script>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">&#8679;</button>
+  <script src="scroll-top-button.js"></script>
+
+  <footer class="p-center sticky-footer">
+    <div class="container-fluid text-center">
+      <span class="text-muted"><small><em>All content copyright &copy; 2023, JLRS Data Solutions Inc.</em></small></span>
+    </div>
+  </footer>
+</body>
+</html>
