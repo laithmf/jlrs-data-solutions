@@ -26,7 +26,19 @@ A fully functional desktop application for managing employee records, built with
 
 ---
 
-### Project 2 — *(Coming Soon)*
+### [Project 2 — La Café Coffee Shop](Project_2.html)
+A state-of-the-art coffee shop application with advanced order management, inventory tracking, and a seamless user experience — all in one program.
+
+**Tech Stack:** Python 3 · Tkinter GUI · JSON Database · Order Management · Inventory System
+
+**Features:**
+- Full order management from welcome screen to checkout
+- Real-time inventory tracking with live updates
+- Persistent order and cart storage via JSON
+- Staff-friendly interface for fast order processing
+- EULA-gated download of the compiled `.exe`
+
+📄 [View Project 2 Page](Project_2.html) · 📥 Download via EULA on the project page
 
 ---
 
@@ -35,3 +47,29 @@ A fully functional desktop application for managing employee records, built with
 ---
 
 ## Repo Structure
+
+```
+jlrs-data-solutions/
+├── index.html               # Home / landing page
+├── Project_1.html           # Project 1 showcase page
+├── Project_2.html           # Project 2 showcase page
+├── Project_3.html           # Project 3 showcase page (coming soon)
+├── mystyleSheet.css         # Shared stylesheet
+├── project1_style.css       # Project 1 specific styles
+├── myscript.js              # Tab/UI script
+├── scroll-top-button.js     # Scroll-to-top utility
+├── images/                  # All project images and assets
+└── zip-files/               # Downloadable project executables
+    ├── employees-queries-database.zip
+    └── Project2-application.zip
+```
+
+---
+
+## About
+
+JLRS Data Solutions Inc. is a student software team focused on building practical, well-documented applications. Our methodology emphasizes tailored solutions, deep technical knowledge, and clean user experiences.
+
+---
+
+*All content copyright © 2023, JLRS Data Solutions Inc.*
