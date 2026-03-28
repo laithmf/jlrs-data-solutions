@@ -42,7 +42,19 @@ A state-of-the-art coffee shop application with advanced order management, inven
 
 ---
 
-### Project 3 — *(Coming Soon)*
+### [Project 3 — Mario in the World of Bowser](Project_3.html)
+A Flappy Bird-style game where Mario rides through Bowser's treacherous lava world — dodging fireballs, navigating pillars, and competing for a spot on the top 10 leaderboard.
+
+**Tech Stack:** Python 3 · Pygame · Game Physics · Sound FX · Pickle Leaderboard · Obstacle AI
+
+**Features:**
+- Full Flappy Bird-style physics with Mario-themed assets
+- Bowser fireball obstacles and dynamic pillar generation
+- Name entry and persistent top-10 leaderboard via Pickle
+- Custom sound effects and atmospheric background music
+- EULA-gated download of the compiled `.exe`
+
+📄 [View Project 3 Page](Project_3.html) · 📥 Download via EULA on the project page
 
 ---
 
@@ -50,18 +62,19 @@ A state-of-the-art coffee shop application with advanced order management, inven
 
 ```
 jlrs-data-solutions/
-├── index.html               # Home / landing page
-├── Project_1.html           # Project 1 showcase page
-├── Project_2.html           # Project 2 showcase page
-├── Project_3.html           # Project 3 showcase page (coming soon)
-├── mystyleSheet.css         # Shared stylesheet
-├── project1_style.css       # Project 1 specific styles
-├── myscript.js              # Tab/UI script
-├── scroll-top-button.js     # Scroll-to-top utility
-├── images/                  # All project images and assets
-└── zip-files/               # Downloadable project executables
+├── index.html                        # Home / landing page
+├── Project_1.html                    # Employee Database showcase
+├── Project_2.html                    # La Café Coffee Shop showcase
+├── Project_3.html                    # Flappy Mario showcase
+├── mystyleSheet.css                  # Shared stylesheet
+├── project1_style.css                # Project 1 specific styles
+├── myscript.js                       # Tab/UI script
+├── scroll-top-button.js              # Scroll-to-top utility
+├── images/                           # All project images and assets
+└── zip-files/                        # Downloadable project executables
     ├── employees-queries-database.zip
-    └── Project2-application.zip
+    ├── Project2-application.zip
+    └── FlappyMario_Application.zip
 ```
 
 ---
