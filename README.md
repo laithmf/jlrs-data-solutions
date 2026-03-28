@@ -10,7 +10,7 @@
 
 ## Projects
 
-### [Project 1 — Employee Database Management System](Project_1.html)
+### [Project 1 — Employee Database Management System](https://laithmf.github.io/jlrs-data-solutions/Project_1.html)
 A fully functional desktop application for managing employee records, built with Python, Tkinter, and a persistent Pickle database.
 
 **Tech Stack:** Python 3 · Tkinter GUI · Pickle DB · CSV Import · Event Logging · Input Validation
@@ -22,11 +22,11 @@ A fully functional desktop application for managing employee records, built with
 - Bulk CSV import on startup with duplicate SSN detection
 - EULA-gated download of the compiled `.exe`
 
-📄 [View Project 1 Page](Project_1.html) · 📥 Download via EULA on the project page
+📄 [View Project 1 Page](https://laithmf.github.io/jlrs-data-solutions/Project_1.html) · 📥 Download via EULA on the project page
 
 ---
 
-### [Project 2 — La Café Coffee Shop](Project_2.html)
+### [Project 2 — La Café Coffee Shop](https://laithmf.github.io/jlrs-data-solutions/Project_2.html)
 A state-of-the-art coffee shop application with advanced order management, inventory tracking, and a seamless user experience — all in one program.
 
 **Tech Stack:** Python 3 · Tkinter GUI · JSON Database · Order Management · Inventory System
@@ -38,11 +38,11 @@ A state-of-the-art coffee shop application with advanced order management, inven
 - Staff-friendly interface for fast order processing
 - EULA-gated download of the compiled `.exe`
 
-📄 [View Project 2 Page](Project_2.html) · 📥 Download via EULA on the project page
+📄 [View Project 2 Page](https://laithmf.github.io/jlrs-data-solutions/Project_2.html) · 📥 Download via EULA on the project page
 
 ---
 
-### [Project 3 — Mario in the World of Bowser](Project_3.html)
+### [Project 3 — Mario in the World of Bowser](https://laithmf.github.io/jlrs-data-solutions/Project_3.html)
 A Flappy Bird-style game where Mario rides through Bowser's treacherous lava world — dodging fireballs, navigating pillars, and competing for a spot on the top 10 leaderboard.
 
 **Tech Stack:** Python 3 · Pygame · Game Physics · Sound FX · Pickle Leaderboard · Obstacle AI
@@ -54,7 +54,7 @@ A Flappy Bird-style game where Mario rides through Bowser's treacherous lava wor
 - Custom sound effects and atmospheric background music
 - EULA-gated download of the compiled `.exe`
 
-📄 [View Project 3 Page](Project_3.html) · 📥 Download via EULA on the project page
+📄 [View Project 3 Page](https://laithmf.github.io/jlrs-data-solutions/Project_3.html) · 📥 Download via EULA on the project page
 
 ---
 
